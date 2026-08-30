@@ -1,0 +1,24 @@
+"use client";
+import {useEffect,useState} from "react";
+const CA="0x9c69a66e814198a4bf60b9e6712f06fa22001600";
+const DEX="https://radardex.pro/#0x9c69a66e814198a4bf60b9e6712f06fa22001600";
+const X="https://x.com/Buildog_";
+export default function Home(){
+ const [copied,setCopied]=useState(false);
+ const copy=async()=>{await navigator.clipboard.writeText(CA);setCopied(true);setTimeout(()=>setCopied(false),1400)};
+ useEffect(()=>{const els=[...document.querySelectorAll(".reveal")];const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("show")),{threshold:.15});els.forEach(e=>io.observe(e));return()=>io.disconnect()},[]);
+ return <main>
+  <header className="nav"><a className="brand" href="#">BUILDOG<span>.</span></a><nav><a href="#story">Story</a><a href="#buildog">Buildog</a><a href="#token">Token</a></nav><div className="actions"><a className="ghost" href={X} target="_blank">X</a><a className="btn small" href={DEX} target="_blank">BUY $BUILDOG</a></div></header>
+  <section className="hero">
+   <div className="heroCopy reveal show"><div className="eyebrow"><i/> DOG ON DUTY <b>ARC // 001</b></div><div className="wordmark">BUILDOG</div><h1>THE GOODEST<br/>BUILDER <em>ON ARC.</em></h1><p>227 teams came to build the future.<br/>One dog came dressed for the job.</p><div className="cta"><a className="btn" href={DEX} target="_blank">BUY $BUILDOG ↗</a><a className="ghost large" href={X} target="_blank">FOLLOW ON X</a></div><div className="contract"><span>CA</span><code>{CA}</code><button onClick={copy}>{copied?"COPIED ✓":"COPY"}</button></div>
+   </div>
+   <div className="heroVisual reveal show"><div className="coord">39.8283°N // BUILD MODE</div><img src="/buildog.png" alt="Buildog wearing a builder hat"/><div className="stamp">BUILD / SHIP / REPEAT</div></div>
+  </section>
+  <section id="story" className="story reveal"><div className="sectionTag">01 / ORIGIN STORY 🐾</div><h2>EVERY HACKATHON HAS WINNERS.<br/><em>THIS ONE HAD A BUILDOG.</em></h2><div className="beats"><p><strong>227 TEAMS SHOWED UP.</strong><span>Builders shipping AI agents, payments, markets, oracles and infrastructure.</span></p><p><strong>THEY BUILT THE FUTURE.</strong><span>In one weekend, the internet economy got a little more real.</span></p><p><strong>AND IN THE MIDDLE OF IT ALL...</strong><span>There was a dog. Wearing the builder hat. Photographed, posted by the chain itself, and seen across the timeline.</span></p></div><div className="named">NO TICKER. NO TOKEN. NOT EVEN A NAME.<br/><b>THEY CALLED HIM <em>BUILDOG.</em></b></div><p className="storyEnd">$BUILDOG is the community giving Arc's goodest builder the ticker he was always missing.<br/><strong>Built where the story happened. On Arc.</strong></p></section>
+  <section className="score reveal"><div className="scoreHead"><span>BUILD_STATUS.LOG</span><span>STATUS: SHIPPED</span></div>{[["227","TEAMS BUILDING"],["1","DOG ON DUTY"],["∞","TREATS DESERVED"],["$BUILDOG","TICKER ACQUIRED"]].map(([v,l],i)=><div className="scoreRow" key={l}><small>0{i+1}</small><b>{v}</b><span>{l}</span><i>{i===3?"ASSIGNED":"OK"}</i></div>)}</section>
+  <section id="buildog" className="why reveal"><div className="sectionTag">02 / WHY BUILDOG</div><h2>HE DIDN'T WIN THE HACKATHON.<br/><em>HE WON THE TIMELINE.</em></h2><div className="whyGrid"><p>No complicated utility.<br/>No corporate manifesto.<br/><br/>Just the dog who showed up where people were building the future.</p><aside><span>builder_status</span><b>ONLINE</b><span>mission</span><b>KEEP SHIPPING</b><span>reward</span><b>TREATS</b></aside></div><div className="line">THE BUILDERS GOT PRIZES. <b>BUILDOG GOT A TICKER.</b></div></section>
+  <section id="token" className="token reveal"><div className="sectionTag">03 / TOKEN</div><h2>$BUILDOG</h2><div className="tokenRows"><div><span>TICKER</span><b>$BUILDOG</b></div><div><span>NETWORK</span><b>ARC</b></div><div><span>CONTRACT</span><code>{CA}</code></div></div><div className="cta center"><a className="btn" href={DEX} target="_blank">BUY ON RADARDEX ↗</a><button className="ghost large" onClick={copy}>{copied?"COPIED ✓":"COPY CONTRACT"}</button></div></section>
+  <section className="final reveal"><div className="paw">🐾</div><h2>KEEP BUILDING.</h2><p>The internet has enough suits.<br/>Give the dog a builder hat.</p><a className="btn" href={DEX} target="_blank">BUY $BUILDOG ↗</a></section>
+  <footer><a className="brand" href="#">BUILDOG<span>.</span></a><p>Built by the community on Arc.</p><div><a href={X} target="_blank">X</a><a href={DEX} target="_blank">RadarDEX</a></div><small>$BUILDOG is a community meme token. Always do your own research.</small></footer>
+ </main>
+}
